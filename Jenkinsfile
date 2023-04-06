@@ -9,14 +9,14 @@ pipeline {
         stage('Build') {
             steps {
               bat '''
-             cd spring/
-             docker build -t spring-image .
-             cd ..
              cd angular/
              docker build -t angular-image .
              cd database
              docker build -t postgres-image .
              cd ../..
+             cd spring/
+             docker build -t spring-image .
+             cd ..
               '''
             }
         }
