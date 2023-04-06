@@ -1,0 +1,23 @@
+version: '2'
+services:
+  postgres-0:
+    image: postgres-image
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  spring-0:
+    image: spring-image
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres-0
+    environment:
+      spring_datasource_url: jdbc:postgresql://postgres-0:5432/postgres
+      spring_datasource_username: postgres
+      spring_datasource_password: postgres
+  angular-0:
+    image: angular-image
+    ports:
+      - 4200:4200

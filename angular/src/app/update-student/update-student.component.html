@@ -1,0 +1,31 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Update Student </h3>
+    <form (ngSubmit) = "onUpdate()">
+
+        <div class="form-group">
+            <label> Name </label>
+            <input type="text" class="form-control" id="name"
+                [(ngModel)] = "student.name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label> Email </label>
+            <input type="text" class="form-control" id="email"
+                [(ngModel)] = "student.email" name="email">
+        </div>
+
+        <div class="form-group">
+            <label> Date of birth </label>
+            <input type="text" class="form-control" id="dob"
+                [(ngModel)] = "student.dob" name="dob">
+        </div>
+
+        <div class="form-group">
+            <label> Specialization </label>
+            <input type="text" class="form-control" id="specialization"
+                [(ngModel)] = "student.specialization" name="specialization">
+        </div>
+
+        <button class="btn btn-success" type="submit">Update</button>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+version: '1'
+services:
+  postgresql:
+    container_name: postgresql
+    image: sergiuwat/postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: root
+    networks:
+      - nw
+
+  spring-app:
+    image: sergiuwat/test
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - nw
+    restart: always
+
+  angular-app:
+    image: sergiuwat/angular
+    ports:
+      - 4200:4200
+    networks:
+      - nw
+
+networks:
+  nw:
